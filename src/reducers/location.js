@@ -3,7 +3,9 @@ import {
 } from '../actions/actionTypes'
 
 const initialState = {
-  name: 'Hong Kong',
+  name: '',
+  id: null,
+  error: null
 }
 
 const ACTION_HANDLERS = {

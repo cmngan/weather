@@ -1,19 +1,11 @@
 import React from 'react'
 
-import { connect } from 'react-redux'
-import { onChangeLocation } from '../actions/location'
+import Location from './LocationPicker'
 
-function App({locationName}) {
+export default ({locationName})  => {
   return (
-    <div>{locationName}</div>
+    <div>
+      <Location />
+    </div>
   )
 }
-
-const mapStateToProps = state => ({
-  locationName: state.location.name
-})
-const mapDispatchToProps = {
-  onChangeLocation
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
