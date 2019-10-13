@@ -1,7 +1,7 @@
 export function toDay(date) {
   return [
     'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
-  ][new Date(date).getDay()]
+  ][new Date(date * 1000).getDay()]
 }
 
 export function degToWord(deg) { // not sure the naming
