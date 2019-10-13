@@ -19,7 +19,7 @@ const WeatherDetails = ({ weather, selectedDay }) => {
   if(!weather) return null
   return (
     <Card center flex={1} ref={cardRef}>
-      <Text XL>{`${toDay(weather[0].dt_txt)} (${weather[0].dt_txt.slice(0, 10)})`}</Text>
+      <Text XL>{`${toDay(weather[0].dt)} (${weather[0].dt_txt.slice(0, 10)})`}</Text>
       <Row flexWrap>
         {weather.map(({ dt, dt_txt, main: { temp_max, temp_min, temp }, weather: [{description, icon}], wind: { speed, deg } }) => 
           <Card key={dt} flex={1}>

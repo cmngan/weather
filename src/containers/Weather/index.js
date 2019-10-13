@@ -8,8 +8,6 @@ import { Row, Col } from 'components/Layout'
 import Card from 'components/Card'
 import Hr from 'components/Hr'
 
-import { toDay, degToWord } from 'util/format'
-
 import WeatherCard from './WeatherCard'
 import WeatherDetails from './WeatherDetails'
 

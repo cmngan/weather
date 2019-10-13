@@ -9,7 +9,7 @@ import Input from 'components/Input'
 import Text from 'components/Text'
 import { Col } from 'components/Layout'
 
-import cityList from 'resources/city.list.min.json'
+import cityList from 'resources/cityList'
 
 const Box = styled(Col)`
   flex: 1;
@@ -46,7 +46,7 @@ function LocationInput({ location: { name, id, selecting }, onChangeLocation, on
   useEffect(() => {
     setLocationText(name)
   }, [name])
-  const filteredCityList = cityList.filter(({ name, country }) => name.toLowerCase().includes(locationTextLowerCase) || country.toLowerCase().includes(locationTextLowerCase))
+  const filteredCityList = cityList.filter(({ lowerCaseName, lowerCaseCountry }) => lowerCaseName.startsWith(locationTextLowerCase) || lowerCaseCountry.startsWith(locationTextLowerCase))
   return (
     <Box>
       <Input value={locationText} onChange={({ target: {value} }) => setLocationText(value)} onFocus={onFocusLocation} />
@@ -55,7 +55,6 @@ function LocationInput({ location: { name, id, selecting }, onChangeLocation, on
           {
             filteredCityList.length ?
               filteredCityList
-              // .sort((a, b) => ) TODO: sorting
               .slice(0, 100)
               .map(({ id, name, country }) => <Option key={id} onClick={() => onChangeLocation(id, name)}>{`${name} (${country})`}</Option>)
             : <Text>No result. Please refine the input.</Text>

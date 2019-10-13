@@ -17,7 +17,7 @@ const WeatherCard = ({
   index
 }) => 
   <Card key={dt} onClick={() => selectDay(index)} selected={index === selectedDay}>
-    <Text M>{`${toDay(dt_txt)} (${dt_txt.slice(0, 10)})`}</Text>
+    <Text M>{`${toDay(dt)} (${dt_txt.slice(0, 10)})`}</Text>
     <Row centerVertical>
       <img src={`http://openweathermap.org/img/wn/${icon}.png`} />
       <Text>{description}</Text>
