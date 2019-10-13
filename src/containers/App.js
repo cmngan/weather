@@ -1,11 +1,13 @@
 import React from 'react'
 
 import Location from './LocationPicker'
+import Weather from './Weather'
 
-export default ({locationName})  => {
+export default ()  => {
   return (
     <div>
       <Location />
+      <Weather />
     </div>
   )
 }

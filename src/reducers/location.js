@@ -1,17 +1,25 @@
 import {
-  LOCATION_CHANGE
+  LOCATION_CHANGE,
+  LOCATION_FOCUS
 } from '../actions/actionTypes'
 
 const initialState = {
-  name: '',
   id: null,
-  error: null
+  name: '',
+  error: null,
+  selecting: true
 }
 
 const ACTION_HANDLERS = {
+  [LOCATION_FOCUS]: (state) => ({
+    ...state,
+    selecting: true
+  }),
   [LOCATION_CHANGE]: (state, action) => ({
     ...state,
-    name: action.payload.name
+    id: action.payload.id,
+    name: action.payload.name,
+    selecting: false
   })
 }
 

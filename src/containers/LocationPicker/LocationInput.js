@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import styled, { css } from 'styled-components'
 
 import { connect } from 'react-redux'
-import { onChangeLocation } from 'actions/location'
+import { onChangeLocation, onFocusLocation } from 'actions/location'
 
 import Input from 'components/Input'
 import Text from 'components/Text'
@@ -12,23 +12,56 @@ import { Col } from 'components/Layout'
 import cityList from 'resources/city.list.min.json'
 
 const Box = styled(Col)`
+  flex: 1;
+  height: 1px;
+  width: 90%;
+  max-width: 500px;
+`
+
+const OptionsWrapper = styled(Col)`
+  position: relative;
+  height: 0px;
+`
+
+const Options = styled(Col)`
+  overflow: auto;
   ${p => p.open && css`
-    width: 100vw;
-    height: 100vh;
     position: absolute;
     top: 0;
+    height: 80vh;
     left: 0;
+    right: 0;
   `}
 `
 
-function LocationInput({ location: { name, id } }) {
-  const [open, setOpen] = useState(false)
+const Option = styled(Text)`
+  :hover {
+    background-color: #eee;
+  }
+`
+
+function LocationInput({ location: { name, id, selecting }, onChangeLocation, onFocusLocation }) {
   const [locationText, setLocationText] = useState(name)
-  console.log(cityList)
+  const locationTextLowerCase = locationText.toLowerCase()
+  useEffect(() => {
+    setLocationText(name)
+  }, [name])
+  const filteredCityList = cityList.filter(({ name, country }) => name.toLowerCase().includes(locationTextLowerCase) || country.toLowerCase().includes(locationTextLowerCase))
   return (
-    <Box open={open}>
-      <Text>Please select a location</Text>
-      <Input value={locationText} onChange={({ target: {value} }) => setLocationText(value)}/>
+    <Box>
+      <Input value={locationText} onChange={({ target: {value} }) => setLocationText(value)} onFocus={onFocusLocation} />
+      <OptionsWrapper>
+        <Options open={selecting}>
+          {
+            filteredCityList.length ?
+              filteredCityList
+              // .sort((a, b) => ) TODO: sorting
+              .slice(0, 100)
+              .map(({ id, name, country }) => <Option key={id} onClick={() => onChangeLocation(id, name)}>{`${name} (${country})`}</Option>)
+            : <Text>No result. Please refine the input.</Text>
+          }
+        </Options>
+      </OptionsWrapper>
     </Box>
   )
 }
@@ -37,7 +70,7 @@ const mapStateToProps = state => ({
   location: state.location
 })
 const mapDispatchToProps = {
-  onChangeLocation
+  onChangeLocation, onFocusLocation
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LocationInput)

@@ -2,7 +2,8 @@
 import styled, { css } from 'styled-components'
 const Flex = styled.div`
   display: flex;
-  ${p => p.wrap && css`flex-wrap: wrap`}
+  ${p => p.flexWrap && css`flex-wrap: wrap`}
+  ${p => p.flex && css`flex: ${p.flex}`};
   ${p => p.width && css`width: ${p.width}`};
   ${p => p.height && css`height: ${p.height}`};
   ${p => p.bgColor && css`background-color: ${p.bgColor}`};

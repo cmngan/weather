@@ -1,18 +1,26 @@
-import React, { useEffect } from 'react'
-import styled from 'styled-components'
+import React, { useState, useEffect } from 'react'
+import styled, { css } from 'styled-components'
 
 import { connect } from 'react-redux'
-import { onChangeLocation } from '../../actions/location'
+import { getSavedLocation } from '../../actions/location'
 
 import LocationInput from './LocationInput'
 import Text from '../../components/Text'
 import { Col } from '../../components/Layout'
 
-function LocationPicker({locationName}) {
+const Box = styled(Col)`
+  padding: 30px 0;
+`
+
+function LocationPicker({ getSavedLocation }) {
+  useEffect(() => {
+    getSavedLocation()
+  }, [])
   return (
-    <Col center>
+    <Box center>
+      <Text>Please select a location</Text>
       <LocationInput />
-    </Col>
+    </Box>
   )
 }
 
@@ -20,7 +28,7 @@ const mapStateToProps = state => ({
   locationName: state.location.name
 })
 const mapDispatchToProps = {
-  onChangeLocation
+  getSavedLocation
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LocationPicker)
