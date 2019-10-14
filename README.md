@@ -19,8 +19,11 @@ In terminal, type `yarn start` or `npm start`
 In terminal, type `yarn build` or `npm build`
 ## Release
 This repo is integrated into Netlify. Therefore, it will auto release once pushed to master branch. 
+## Generate city list
+After getting a updated version of city.list.min.json from official website, run `yarn generate-city-list` to massage the data and save it as cityList.json.
 
 # Assumption
 1. Browser: Support latest version of modern browsers only. We don't need to support IE.
 2. SEO is not required and important.
 3. Security is not required and important. API key can be public.
+4. Bundle size can be large. Otherwise, should not load all city in the bundle.
