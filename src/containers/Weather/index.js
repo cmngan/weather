@@ -1,12 +1,10 @@
-import React, { useState } from 'react'
-import styled, { css } from 'styled-components'
+import React from 'react'
+import styled from 'styled-components'
 
 import { connect } from 'react-redux'
 
 import Text from 'components/Text'
-import { Row, Col } from 'components/Layout'
-import Card from 'components/Card'
-import Hr from 'components/Hr'
+import { Col } from 'components/Layout'
 
 import WeatherCard from './WeatherCard'
 import WeatherDetails from './WeatherDetails'

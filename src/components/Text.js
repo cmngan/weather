@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react'
 import styled, { css } from 'styled-components'
 
-const P = styled.p`
+export default styled.p`
   margin: 0px;
   padding: 4px;
   ${p => p.onClick && css`cursor: pointer;`}
@@ -12,7 +11,3 @@ const P = styled.p`
   ${p => p.XL && css`font-size: 28px;`}
   ${p => p.H1 && css`font-size: 38px;`}
 `
-
-export default (props) => {
-  return <P {...props} />
-}

@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import styled, { css } from 'styled-components'
+import React from 'react'
 
 import { connect } from 'react-redux'
 import { selectDay } from 'actions/weather'
@@ -19,7 +18,7 @@ const WeatherCard = ({
   <Card key={dt} onClick={() => selectDay(index)} selected={index === selectedDay}>
     <Text M>{`${toDay(dt)} (${dt_txt.slice(0, 10)})`}</Text>
     <Row centerVertical>
-      <img src={`http://openweathermap.org/img/wn/${icon}.png`} />
+      <img src={`http://openweathermap.org/img/wn/${icon}.png`} alt={`weather icon: ${description}`} />
       <Text>{description}</Text>
     </Row>
     <Row centerVertical>

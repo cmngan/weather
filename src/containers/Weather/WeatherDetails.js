@@ -1,5 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
-import styled, { css } from 'styled-components'
+import React, { useRef, useEffect } from 'react'
 
 import { connect } from 'react-redux'
 
@@ -25,7 +24,7 @@ const WeatherDetails = ({ weather, selectedDay }) => {
           <Card key={dt} flex={1}>
             <Text M>{dt_txt.slice(11, 16)}</Text>
             <Row centerVertical>
-              <img src={`http://openweathermap.org/img/wn/${icon}.png`} />
+              <img src={`http://openweathermap.org/img/wn/${icon}.png`} alt={`weather icon: ${description}`} />
               <Text>{description}</Text>
             </Row>
             <Row centerVertical>

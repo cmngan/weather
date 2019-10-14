@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import styled, { css } from 'styled-components'
+import React, { useEffect } from 'react'
+import styled from 'styled-components'
 
 import { connect } from 'react-redux'
 import { getSavedLocation } from '../../actions/location'
@@ -15,7 +15,7 @@ const Box = styled(Col)`
 function LocationPicker({ getSavedLocation }) {
   useEffect(() => {
     getSavedLocation()
-  }, [])
+  }, [getSavedLocation])
   return (
     <Box center>
       <Text>Please select a location</Text>
